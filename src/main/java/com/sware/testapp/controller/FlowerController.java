@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sware.testapp.domain.Flower;
+import com.sware.testapp.domain.User;
 import com.sware.testapp.repository.FlowerRepo;
 import com.sware.testapp.repository.FlowerRepository;
 
@@ -36,6 +37,20 @@ public class FlowerController {
 			}
 			return  ResponseEntity.ok().body(flower);
 		}
+	 
+	 @CrossOrigin
+	 @PostMapping("/Login")
+	 public String loginUser(@RequestBody User user ){
+		 try {
+			 System.out.println(user.getUserName()+"  "+user.getPassword());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		 
+		return "logged in successfully";
+		 
+	 }
+	 
 	 
 	 @GetMapping("/getme")
 		public String getMe() {
